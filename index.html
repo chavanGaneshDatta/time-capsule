@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Time Capsule</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <i class="fa-solid fa-box-archive"></i>
+        <h2>Digital Time Capsule</h2>
+    </div>
+
+    <button id="themeBtn">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+</header>
+
+<main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Store Memories for the Future</h1>
+        <p>Create digital time capsules filled with messages, photos, and memories that unlock on a future date.</p>
+    </section>
+
+    <!-- Create Capsule -->
+    <section class="create-card">
+
+        <h2>Create New Capsule</h2>
+
+        <form id="capsuleForm">
+
+            <div class="input-group">
+                <label>Title</label>
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Letter to Future Me"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Unlock Date</label>
+                <input
+                    type="date"
+                    id="unlockDate"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Unlock Time</label>
+                <input
+                    type="time"
+                    id="unlockTime"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Upload Image</label>
+                <input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Message</label>
+                <textarea
+                    id="message"
+                    rows="6"
+                    placeholder="Write something for your future self..."
+                ></textarea>
+            </div>
+
+            <div class="visibility">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="visibility"
+                        value="private"
+                        checked
+                    >
+                    Private
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="visibility"
+                        value="public"
+                    >
+                    Public
+                </label>
+
+            </div>
+
+            <button class="save-btn" type="submit">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Save Capsule
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Search -->
+    <section class="toolbar">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search Capsules..."
+        >
+
+        <select id="sort">
+
+            <option>Newest</option>
+            <option>Oldest</option>
+            <option>Unlock Date</option>
+            <option>Locked First</option>
+            <option>Unlocked First</option>
+
+        </select>
+
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+
+        <div class="stat-card">
+            <h3 id="totalCapsules">0</h3>
+            <p>Total Capsules</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="lockedCount">0</h3>
+            <p>Locked</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="unlockedCount">0</h3>
+            <p>Unlocked</p>
+        </div>
+
+        <div class="stat-card">
+            <h3 id="publicCount">0</h3>
+            <p>Public</p>
+        </div>
+
+    </section>
+
+    <!-- Capsules -->
+    <section>
+
+        <h2 class="section-title">My Capsules</h2>
+
+        <div class="capsule-grid" id="capsuleGrid">
+
+            <!-- Example Card -->
+
+            <div class="capsule-card">
+
+                <div class="capsule-image">
+                    <img src="https://picsum.photos/500/300" alt="">
+                </div>
+
+                <div class="capsule-content">
+
+                    <h3>Birthday Letter</h3>
+
+                    <span class="status locked">
+                        🔒 Locked
+                    </span>
+
+                    <p class="countdown">
+                        Unlocks in:
+                        <strong>15 Days 08:12:21</strong>
+                    </p>
+
+                    <p class="date">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        25 Dec 2026
+                    </p>
+
+                    <div class="actions">
+
+                        <button class="view">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+
+                        <button class="edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button class="delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- View Capsule Modal -->
+<div class="modal" id="viewModal">
+
+    <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <img
+            id="modalImage"
+            src=""
+            alt=""
+        >
+
+        <h2 id="modalTitle">
+            Capsule Title
+        </h2>
+
+        <p id="modalMessage">
+            Capsule Message...
+        </p>
+
+        <div class="modal-footer">
+
+            <span id="modalVisibility">
+                Private
+            </span>
+
+            <span id="modalDate">
+                25 Dec 2026
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Delete Confirmation -->
+<div class="modal" id="deleteModal">
+
+    <div class="modal-content small">
+
+        <h2>Delete Capsule?</h2>
+
+        <p>
+            This action cannot be undone.
+        </p>
+
+        <div class="confirm-actions">
+
+            <button class="cancel">
+                Cancel
+            </button>
+
+            <button class="confirm-delete">
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
