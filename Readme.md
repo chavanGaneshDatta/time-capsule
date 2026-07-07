@@ -131,4 +131,6 @@ All capsules are stored locally in the browser using the Local Storage API. No e
 
 ## 👨‍💻 Author
 
+Chavan Ganesh Datta <br>
+
 Developed as a front-end web application to preserve memories and allow users to revisit them at a meaningful moment in the future.
